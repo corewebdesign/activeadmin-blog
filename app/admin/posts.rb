@@ -17,7 +17,7 @@ ActiveAdmin.register Blog::Post do
 
   form do |f|
     f.inputs "Post details" do
-      f.input :category
+      f.input :category_id, as: :hidden, :value => 1
       f.input :author
       f.input :title, as: :title
       f.input :abstract, as: :wysihtml5, commands: :barebone, height: :small, blocks: :barebone
