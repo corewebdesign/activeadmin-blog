@@ -17,11 +17,11 @@ module Blog
     friendly_id :seo_slug_or_title, use: :slugged
 
     scope :sorted_by_date, -> { order('published_at DESC') }
+    scope :by_date, -> { visible.where('published_at < ?', Time.now) }
     scope :sticky, -> { where(sticky: true) }
     scope :matching_query, ->(query) { where("title LIKE :query OR body LIKE :query", query: "%#{query}%") }
     scope :visible, -> { where(visible: true) }
     scope :published, -> { visible.where('published_at < ?', Time.now) }
-
     has_image :featured_image
 
     attr_accessible :category_id, :author_id, :title, :abstract, :body, :sticky,
@@ -57,6 +57,18 @@ module Blog
 
     def self.tagged_with(name)
       Blog::Tag.find_by_name!(name).posts
+    end
+
+    def self.by_year(year)
+      where('extract(year from published_at) = ?', year)
+    end
+
+    def self.by_month(month)
+      where('extract(month from published_at) = ? and extract(year from published_at) = ?', month, Date.now.year)
+    end
+
+    def self.by_archive(month, year)
+      where("extract(month from published_at) = ? and extract(year from published_at) = ?", month, year)
     end
 
     private
