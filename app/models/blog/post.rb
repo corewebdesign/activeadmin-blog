@@ -10,7 +10,7 @@ module Blog
     has_many :post_relations, class_name: "Blog::PostRelation", inverse_of: :post
     has_many :related_posts, through: :post_relations, source: :related
 
-    validates :title, :body, :category, :author, :published_at, presence: true
+    validates :title, :body, :author, :published_at, presence: true
     validate :check_presence_of_featured_image_if_sticky
 
     extend FriendlyId
@@ -53,6 +53,10 @@ module Blog
 
     def author_name
       author.full_name
+    end
+
+    def self.tagged_with(name)
+      Blog::Tag.find_by_name!(name).posts
     end
 
     private
