@@ -1,5 +1,6 @@
 ActiveAdmin.register Blog::Category do
   #menu parent: "Blog", label: "Categories"
+  menu false
 
   index do
     column :name
