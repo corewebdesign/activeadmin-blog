@@ -5,7 +5,7 @@ ActiveAdmin.register Blog::Post do
     column :title
     column :author_name
     column :visible
-    column :sticky
+    # column :sticky
     column :published_at
     default_actions
   end
@@ -13,7 +13,7 @@ ActiveAdmin.register Blog::Post do
   filter :title
   filter :abstract
   filter :body
-  filter :sticky
+  # filter :sticky
 
   form do |f|
     f.inputs "Post details" do
@@ -25,7 +25,7 @@ ActiveAdmin.register Blog::Post do
       f.input :comma_separated_tags, as: :terms, terms: Blog::Tag.all.map(&:name)
       f.input :related_posts, as: :chosen, create_option: false
       f.input :visible
-      f.input :sticky
+      # f.input :sticky
       f.input :published_at, as: :datepicker
     end
 
