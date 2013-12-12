@@ -12,7 +12,7 @@ ActiveAdmin.register Blog::Tag do
   form do |f|
     f.inputs "Tag Details" do
       f.input :name
-      f.input :trending
+      # f.input :trending
       f.input :description
     end
     f.actions
