@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Activeadmin::Blog::VERSION
   spec.authors       = ["Stefano Verna"]
   spec.email         = ["stefano.verna@welaika.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = "Adds a blog to active admin"
+  spec.summary       = "Adds a blog to active admin"
   spec.homepage      = ""
   spec.license       = "MIT"
 
